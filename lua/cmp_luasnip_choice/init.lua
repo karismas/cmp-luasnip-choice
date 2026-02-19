@@ -1,3 +1,11 @@
+vim.print("HELLO???")
+vim.print("HELLO???")
+vim.print("HELLO???")
+vim.print("HELLO???")
+vim.print("HELLO???")
+vim.print("HELLO???")
+vim.print("HELLO???")
+
 local cmp = require("cmp")
 
 local default_config = {
@@ -15,13 +23,6 @@ function M.setup(config)
 		config = vim.tbl_deep_extend("keep", config, default_config)
 	end
 
-	vim.print("HELLO???")
-	vim.print("HELLO???")
-	vim.print("HELLO???")
-	vim.print("HELLO???")
-	vim.print("HELLO???")
-	vim.print("HELLO???")
-	vim.print("HELLO???")
 	if config.auto_open then
 		vim.api.nvim_create_autocmd("User", {
 			pattern = "LuasnipChoiceNodeEnter",

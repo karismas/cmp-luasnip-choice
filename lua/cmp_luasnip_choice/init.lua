@@ -59,6 +59,12 @@ M.source.complete = function(_, _, callback)
 	end
 
 	local choices = active_choice_nodes[1].choices
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
 	for _, choice in ipairs(choices) do
 		local label = choice:get_static_text()
 		table.insert(items, {

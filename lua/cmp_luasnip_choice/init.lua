@@ -94,4 +94,4 @@ source.complete = function(self, request, callback)
 	})
 end
 
-return source
+return { source }

@@ -61,19 +61,16 @@ M.source.complete = function(_, _, callback)
 	local choices = active_choice_nodes[1].choices
 	for _, choice in ipairs(choices) do
 		local label = choice:get_static_text()
+		vim.print(label)
+		vim.print(label)
+		vim.print(label)
 		table.insert(items, {
 			word = label,
 			label = label,
 			filterText = label,
 		})
 	end
-	local final = { items }
-	vim.print(final)
-	vim.print(final)
-	vim.print(final)
-	vim.print(final)
-
-	callback(final)
+	callback({ items })
 end
 
 -- function M.source:get_debug_name()

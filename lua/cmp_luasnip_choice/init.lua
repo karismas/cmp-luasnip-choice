@@ -52,17 +52,23 @@ end
 
 M.source.complete = function(_, _, callback)
 	local items = {}
-	local choices = require("luasnip.session").active_choice_nodes[1].choices
-	for _, choice in ipairs(choices) do
-		local label = choice:get_static_text()
-		table.insert(items, {
-			word = label,
-			label = label,
-			filterText = label,
-		})
-	end
+	local choices = require("luasnip.session").active_choice_nodes
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
+	vim.print(choices)
+	-- local choices = require("luasnip.session").active_choice_nodes[1].choices
+	-- for _, choice in ipairs(choices) do
+	-- 	local label = choice:get_static_text()
+	-- 	table.insert(items, {
+	-- 		word = label,
+	-- 		label = label,
+	-- 		filterText = label,
+	-- 	})
+	-- end
 
-	callback({ items })
+	-- callback({ items })
 end
 
 -- function M.source:get_debug_name()

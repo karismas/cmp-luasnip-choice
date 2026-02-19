@@ -67,6 +67,10 @@ M.source.complete = function(_, _, callback)
 			filterText = label,
 		})
 	end
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
 	callback({ items })
 end
 

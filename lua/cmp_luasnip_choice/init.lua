@@ -50,19 +50,25 @@ end
 -- 	return ""
 -- end
 
-M.source.complete = function(_, _, callback)
-	local items = {}
-	local choices = require("luasnip.session").active_choice_nodes[1].choices
-	for _, choice in ipairs(choices) do
-		local label = choice:get_static_text()
-		table.insert(items, {
-			word = label,
-			label = label,
-			filterText = label,
-		})
-	end
+M.source.complete = function(self, request, callback)
+	-- local items = {}
+	-- local choices = require("luasnip.session").active_choice_nodes[1].choices
+	-- for _, choice in ipairs(choices) do
+	-- 	local label = choice:get_static_text()
+	-- 	table.insert(items, {
+	-- 		word = label,
+	-- 		label = label,
+	-- 		filterText = label,
+	-- 	})
+	-- end
 
-	callback(items)
+	callback({
+		items = {
+			word = "hi",
+			label = "hi",
+			filterText = "hi",
+		},
+	})
 end
 
 -- function M.source:get_debug_name()

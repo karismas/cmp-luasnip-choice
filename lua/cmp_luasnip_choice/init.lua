@@ -64,9 +64,11 @@ M.source.complete = function(self, request, callback)
 
 	callback({
 		items = {
-			word = "hi",
-			label = "hi",
-			filterText = "hi",
+			{
+				word = "hi",
+				label = "hi",
+				filterText = "hi",
+			},
 		},
 	})
 end

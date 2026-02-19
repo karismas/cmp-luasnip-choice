@@ -60,6 +60,13 @@ function M.source:complete(_, callback)
 		})
 	end
 
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
+	vim.print(items)
 	callback(items)
 end
 

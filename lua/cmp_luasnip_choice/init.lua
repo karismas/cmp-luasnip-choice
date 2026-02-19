@@ -67,11 +67,28 @@ M.source.complete = function(_, _, callback)
 			filterText = label,
 		})
 	end
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	callback({ items })
+	local bla = {
+		items = {
+			{
+				word = "a",
+				label = "a",
+				filterText = "a",
+			},
+			{
+				word = "b",
+				label = "b",
+				filterText = "b",
+			},
+			{
+				word = "c",
+				label = "c",
+				filterText = "c",
+			},
+		},
+	}
+	vim.print(bla)
+	callback(bla)
+	-- callback({ items })
 end
 
 -- function M.source:get_debug_name()

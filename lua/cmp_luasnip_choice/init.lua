@@ -50,7 +50,7 @@ end
 -- 	return ""
 -- end
 
-M.source.complete = function(_, callback)
+M.source.complete = function(_, _, callback)
 	local items = {}
 	local choices = require("luasnip.session").active_choice_nodes[1].choices
 	for _, choice in ipairs(choices) do

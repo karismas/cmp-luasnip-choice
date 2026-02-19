@@ -55,6 +55,7 @@ M.source.complete = function(_, _, callback)
 	local active_choice_nodes = require("luasnip.session").active_choice_nodes
 	if active_choice_nodes == nil or active_choice_nodes[1] == nil then
 		callback({})
+		return
 	end
 
 	local choices = active_choice_nodes[1].choices

@@ -3,11 +3,11 @@
 -- local default_config = {
 -- 	auto_open = true,
 -- }
---
--- local M = {
--- 	source = {},
--- }
---
+
+local M = {
+	source = {},
+}
+
 -- function M.setup(config)
 -- 	if config == nil then
 -- 		config = default_config
@@ -32,11 +32,11 @@
 -- 		})
 -- 	end
 -- end
---
--- function M.source.new()
--- 	return setmetatable({}, { __index = M.source })
--- end
---
+
+M.source.new = function()
+	return setmetatable({}, { __index = M.source })
+end
+
 -- function M.source:is_available()
 -- 	return require("luasnip.session").active_choice_node
 -- end
@@ -49,51 +49,24 @@
 -- function M.source:get_keyword_pattern()
 -- 	return ""
 -- end
---
--- function M.source:complete(_, callback)
--- 	local items = {}
--- 	local choices = require("luasnip.session").active_choice_nodes[1].choices
--- 	for _, choice in ipairs(choices) do
--- 		local label = choice:get_static_text()
--- 		table.insert(items, {
--- 			label = label,
--- 		})
--- 	end
---
--- 	vim.print(items)
--- 	vim.print(items)
--- 	vim.print(items)
--- 	vim.print(items)
--- 	vim.print(items)
--- 	vim.print(items)
--- 	vim.print(items)
--- 	callback(items)
--- end
---
+
+M.source.complete = function(_, callback)
+	local items = {}
+	local choices = require("luasnip.session").active_choice_nodes[1].choices
+	for _, choice in ipairs(choices) do
+		local label = choice:get_static_text()
+		table.insert(items, {
+			word = label,
+			label = label,
+			filterText = label,
+		})
+	end
+
+	callback(items)
+end
+
 -- function M.source:get_debug_name()
 -- 	return "luasnip_choice"
 -- end
---
--- return M
-
-local M = {
-	source = {},
-}
-
-M.source.new = function()
-	return setmetatable({}, { __index = M.source })
-end
-
-M.source.complete = function(self, request, callback)
-	callback({
-		items = {
-			{
-				word = "a",
-				label = "b",
-				filterText = "c",
-			},
-		},
-	})
-end
 
 return M

@@ -76,13 +76,15 @@
 --
 -- return M
 
-local source = {}
+local M = {
+	source = {},
+}
 
-source.new = function()
-	return setmetatable({}, { __index = source })
+M.source.new = function()
+	return setmetatable({}, { __index = M.source })
 end
 
-source.complete = function(self, request, callback)
+M.source.complete = function(self, request, callback)
 	callback({
 		items = {
 			{
@@ -94,4 +96,4 @@ source.complete = function(self, request, callback)
 	})
 end
 
-return { source }
+return M

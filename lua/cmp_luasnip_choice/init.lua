@@ -1,85 +1,97 @@
-vim.print("HELLO???")
-vim.print("HELLO???")
-vim.print("HELLO???")
-vim.print("HELLO???")
-vim.print("HELLO???")
-vim.print("HELLO???")
-vim.print("HELLO???")
+-- local cmp = require("cmp")
+--
+-- local default_config = {
+-- 	auto_open = true,
+-- }
+--
+-- local M = {
+-- 	source = {},
+-- }
+--
+-- function M.setup(config)
+-- 	if config == nil then
+-- 		config = default_config
+-- 	else
+-- 		config = vim.tbl_deep_extend("keep", config, default_config)
+-- 	end
+--
+-- 	if config.auto_open then
+-- 		vim.api.nvim_create_autocmd("User", {
+-- 			pattern = "LuasnipChoiceNodeEnter",
+-- 			callback = function()
+-- 				vim.schedule(function()
+-- 					cmp.complete({
+-- 						config = {
+-- 							sources = {
+-- 								{ name = "luasnip_choice" },
+-- 							},
+-- 						},
+-- 					})
+-- 				end)
+-- 			end,
+-- 		})
+-- 	end
+-- end
+--
+-- function M.source.new()
+-- 	return setmetatable({}, { __index = M.source })
+-- end
+--
+-- function M.source:is_available()
+-- 	return require("luasnip.session").active_choice_node
+-- end
+--
+-- function M.source:execute(completion_item, callback)
+-- 	require("luasnip").set_choice(completion_item.index)
+-- 	callback(completion_item)
+-- end
+--
+-- function M.source:get_keyword_pattern()
+-- 	return ""
+-- end
+--
+-- function M.source:complete(_, callback)
+-- 	local items = {}
+-- 	local choices = require("luasnip.session").active_choice_nodes[1].choices
+-- 	for _, choice in ipairs(choices) do
+-- 		local label = choice:get_static_text()
+-- 		table.insert(items, {
+-- 			label = label,
+-- 		})
+-- 	end
+--
+-- 	vim.print(items)
+-- 	vim.print(items)
+-- 	vim.print(items)
+-- 	vim.print(items)
+-- 	vim.print(items)
+-- 	vim.print(items)
+-- 	vim.print(items)
+-- 	callback(items)
+-- end
+--
+-- function M.source:get_debug_name()
+-- 	return "luasnip_choice"
+-- end
+--
+-- return M
 
-local cmp = require("cmp")
+local source = {}
 
-local default_config = {
-	auto_open = true,
-}
-
-local M = {
-	source = {},
-}
-
-function M.setup(config)
-	if config == nil then
-		config = default_config
-	else
-		config = vim.tbl_deep_extend("keep", config, default_config)
-	end
-
-	if config.auto_open then
-		vim.api.nvim_create_autocmd("User", {
-			pattern = "LuasnipChoiceNodeEnter",
-			callback = function()
-				vim.schedule(function()
-					cmp.complete({
-						config = {
-							sources = {
-								{ name = "luasnip_choice" },
-							},
-						},
-					})
-				end)
-			end,
-		})
-	end
+source.new = function()
+	return setmetatable({}, { __index = source })
 end
 
-function M.source.new()
-	return setmetatable({}, { __index = M.source })
+source.complete = function(self, request, callback)
+	callback({
+		items = {
+			{
+				word = "a",
+				label = "b",
+				filterText = "c",
+			},
+		},
+	})
 end
 
-function M.source:is_available()
-	return require("luasnip.session").active_choice_node
-end
-
-function M.source:execute(completion_item, callback)
-	require("luasnip").set_choice(completion_item.index)
-	callback(completion_item)
-end
-
-function M.source:get_keyword_pattern()
-	return ""
-end
-
-function M.source:complete(_, callback)
-	local items = {}
-	local choices = require("luasnip.session").active_choice_nodes[1].choices
-	for _, choice in ipairs(choices) do
-		local label = choice:get_static_text()
-		table.insert(items, {
-			label = label,
-		})
-	end
-
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	vim.print(items)
-	callback(items)
-end
-
-function M.source:get_debug_name()
-	return "luasnip_choice"
-end
-
-return M
+return source

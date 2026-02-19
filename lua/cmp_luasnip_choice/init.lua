@@ -52,6 +52,7 @@ end
 
 M.source.complete = function(_, _, callback)
 	local items = {}
+
 	local active_choice_nodes = require("luasnip.session").active_choice_nodes
 	if active_choice_nodes == nil or active_choice_nodes[1] == nil then
 		callback({})
@@ -67,28 +68,8 @@ M.source.complete = function(_, _, callback)
 			filterText = label,
 		})
 	end
-	local bla = {
-		items = {
-			{
-				word = "a",
-				label = "a",
-				filterText = "a",
-			},
-			{
-				word = "b",
-				label = "b",
-				filterText = "b",
-			},
-			{
-				word = "c",
-				label = "c",
-				filterText = "c",
-			},
-		},
-	}
-	vim.print(bla)
-	callback(bla)
-	-- callback({ items })
+
+	callback({ items = items })
 end
 
 -- function M.source:get_debug_name()

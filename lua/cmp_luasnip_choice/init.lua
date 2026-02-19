@@ -57,10 +57,6 @@ function M.source:complete(_, callback)
 		local label = choice:get_static_text()
 		table.insert(items, {
 			label = label,
-			word = label,
-			index = _,
-			documentation = label,
-			kind = cmp.lsp.CompletionItemKind.Snippet,
 		})
 	end
 
